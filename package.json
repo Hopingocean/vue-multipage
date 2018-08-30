@@ -1,7 +1,7 @@
 {
-  "name": "fish-platform-client",
+  "name": "vue-multipage",
   "version": "1.0.0",
-  "description": "fish platform",
+  "description": "基于vue-cli构建多页面开发脚手架",
   "author": "Hopingocean <1258963839@qq.com>",
   "private": true,
   "scripts": {

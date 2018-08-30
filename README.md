@@ -1,6 +1,6 @@
-# fish-platform-client
+# vue-multipage
 
-> fish platform
+> 基于vue-cli构建多页面开发脚手架
 
 ## Build Setup
 
