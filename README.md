@@ -22,7 +22,8 @@ npm run build --report
 <pre>
   const glob = require('glob'); // glob是webpack安装时依赖的第三方模块，该模块允许使用*等符号，例如lib/*.js就是获取lib文件夹下的所有js后缀文件
   const HtmlWebpackPlugin = require('html-webpack-plugin'); // 页面模板
-  const PAGE_PATH = path.resolve(__dirname, '../src/' + config.moduleName); // 取得相应的页面路径，可以再config中自定义配置模块名称moduleName，此处config.moduleName为自定义参数，也可以定义为'views'即可
+  // 取得相应的页面路径，可以再config中自定义配置模块名称moduleName，此处config.moduleName为自定义参数，也可以定义为'views'即可
+  const PAGE_PATH = path.resolve(__dirname, '../src/' + config.moduleName);
   const merge = require('webpack-merge');
 
 
@@ -68,14 +69,14 @@ npm run build --report
 2. 在build/webpack.base.conf.js中修改如下：
 
 <pre>
-  <!-- 修改前 -->
+  // 修改前
   module.exports = {
     entry: {
       app: './src/main.js'
     },
   }
 
-  <!-- 修改后 -->
+  // 修改后
   module.exports = {
     entry: utils.entries(),
   }
@@ -84,7 +85,7 @@ npm run build --report
 3. 在build/webpack.dev.conf.js中修改如下：
 
 <pre>
-  <!-- 修改前 -->
+  // 修改前
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
@@ -108,7 +109,7 @@ npm run build --report
     ])
   ]
 
-  <!-- 修改后 -->
+  // 修改后
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
@@ -117,7 +118,7 @@ npm run build --report
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
-    <!-- 注释默认的入口 -->
+    // 注释默认的入口
     // new HtmlWebpackPlugin({
     //   filename: 'index.html',
     //   template: 'index.html',
@@ -131,14 +132,13 @@ npm run build --report
         ignore: ['.*']
       }
     ])
-  ].concat(utils.htmlPlugin())
-  <!-- 复制多页面输出配置 -->
+  ].concat(utils.htmlPlugin()) // 复制多页面配置
 </pre>
 
 4. 修改build/webpack.prod.conf.js如下：
 
 <pre>
-  <!-- 修改前 -->
+  // 修改前
   plugins: [
     ...
     new HtmlWebpackPlugin({
@@ -160,9 +160,9 @@ npm run build --report
     ...
   ]
 
-  <!-- 修改后 -->
+  // 修改后
   plugins: [
-    <!-- 注释默认的入口打包插件 -->
+    // 注释默认的入口打包插件
     // new HtmlWebpackPlugin({
     //   filename: config.build.index,
     //   template: 'index.html',
